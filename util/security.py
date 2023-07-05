@@ -8,7 +8,7 @@ def basic_auth(func):
     """
     Funcion decoradora para verificar si la autenticacion es valida
     """
-    def decorated():
+    def wrapper():
         app_config = Flask('__main__').config
         app_config.from_prefixed_env()
 
@@ -29,10 +29,11 @@ def basic_auth(func):
             return make_response('Autorization is invalid', 403, header)
 
         if username != app_config['BASIC_AUTH_USERNAME']:
-            return make_response('Invalid username or password', 403, header)
+            return make_response('Invalid username', 403, header)
         if password != app_config['BASIC_AUTH_PASSWORD']:
-            return make_response('Invalid username or password', 403, header)
+            return make_response('Invalid password', 403, header)
 
         return func()
 
-    return decorated
+    wrapper.__name__ = func.__name__
+    return wrapper
