@@ -1,23 +1,23 @@
 """
-Sale model on MongoDB
+Modelo de Venta en la base de datos
 """
 from typing import Optional
 
 class Sale:
     """
-    Sale model definition
+    Definicion de la clase Venta
     """
     id: Optional[str]
-    usuario: str
-    producto: str
-    cantidad: int
+    user_id: str
+    product_id: str
+    amount: int
     subtotal: float
     total: float
 
-    def __init__(self, usuario: str, producto: str, cantidad: int, subtotal: float, total: float):
-        self.usuario = usuario
-        self.producto = producto
-        self.cantidad = cantidad
+    def __init__(self, user_id: str, product_id: str, amount: int, subtotal: float, total: float):
+        self.user_id = user_id
+        self.product_id = product_id
+        self.amount = amount
         self.subtotal = subtotal
         self.total = total
 
@@ -26,9 +26,9 @@ class Sale:
         Return the object as a json
         """
         return {
-            'usuario': self.usuario,
-            'producto': self.producto,
-            'cantidad': self.cantidad,
+            'user_id': self.user_id,
+            'product_id': self.product_id,
+            'amount': self.amount,
             'subtotal': self.subtotal,
             'total': self.total
         }

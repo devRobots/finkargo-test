@@ -1,5 +1,5 @@
 """
-Main Application
+Aplicacion Principal
 """
 from dotenv import load_dotenv
 from flask import Flask
@@ -17,4 +17,4 @@ app.register_blueprint(balance_route, url_prefix=URL_PREFIX_API)
 app.register_blueprint(users_route, url_prefix=URL_PREFIX_API)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()

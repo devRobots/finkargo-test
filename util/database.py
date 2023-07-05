@@ -1,16 +1,21 @@
 """
-Database module to connect to the database
+Utilidades para la base de datos
 """
+from flask import Flask
 from pymongo import MongoClient
 
 def get_connection():
     """
-    Get the connection to the database
+    Obtiene la conexión a la base de datos
     """
-    db_username = "ysrosast"
-    db_password = "crashb22"
-    db_host = "cluster0.dxldpvr.mongodb.net"
+    app_config = Flask('__main__').config
+    app_config.from_prefixed_env()
+
+    db_username = app_config['MONGODB_USERNAME']
+    db_password = app_config['MONGODB_PASSWORD']
+    db_host = app_config['MONGODB_HOST']
     uri = f"mongodb+srv://{db_username}:{db_password}@{db_host}/"
+
     client = MongoClient(uri)
 
     return client.finkargo

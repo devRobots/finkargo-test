@@ -1,7 +1,7 @@
 """
-Security module to check if the token is valid
+Utilidades para la seguridad de la aplicacion
 """
-import base64
+from base64 import b64decode, binascii
 from flask import Flask, request, make_response
 
 def basic_auth(func):
@@ -16,22 +16,22 @@ def basic_auth(func):
         header = {"WWW-Authenticate": 'Basic realm="Login Required"'}
 
         if not auth:
-            return make_response('Autorization is missing', 403, header)
+            return make_response('Autorizacion no encontrada', 403, header)
 
         auth = auth.split(" ")
 
         if auth[0] != 'Basic':
-            return make_response('Autorization type is invalid', 403, header)
+            return make_response('El tipo de autorizacion no es valida', 403, header)
 
         try:
-            username, password = base64.b64decode(auth[1]).decode('utf-8').split(":")
-        except base64.binascii.Error:
-            return make_response('Autorization is invalid', 403, header)
+            username, password = b64decode(auth[1]).decode('utf-8').split(":")
+        except binascii.Error:
+            return make_response('La autorizacion no es valida', 403, header)
 
         if username != app_config['BASIC_AUTH_USERNAME']:
-            return make_response('Invalid username', 403, header)
+            return make_response('El nombre de usuario es incorrecto', 403, header)
         if password != app_config['BASIC_AUTH_PASSWORD']:
-            return make_response('Invalid password', 403, header)
+            return make_response('La clave es incorrecta', 403, header)
 
         return func()
 

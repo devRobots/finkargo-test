@@ -21,7 +21,7 @@ def get_users():
 @basic_auth
 def get_user(user_id):
     """
-    Devuelve un usuario
+    Devuelve un usuario por su id
     """
     return get_user_service(user_id)
 
@@ -43,7 +43,7 @@ def add_user():
 @basic_auth
 def update_user(user_id):
     """
-    Actualiza un usuario
+    Actualiza un usuario por su id
     """
     data = request.get_json()
     user = data.get('user')
@@ -57,6 +57,6 @@ def update_user(user_id):
 @basic_auth
 def delete_user(user_id):
     """
-    Elimina un usuario
+    Elimina un usuario por su id
     """
     return delete_user_service(user_id)

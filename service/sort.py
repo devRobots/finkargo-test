@@ -1,5 +1,5 @@
 """
-Servicio de Endpoint que recibe una lista de elementos y los ordena
+Servicio de Endpoint que recibe una lista de numeros y los ordena
 """
 from flask import make_response
 

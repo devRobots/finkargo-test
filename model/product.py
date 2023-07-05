@@ -1,20 +1,20 @@
 """
-User model on MongoDB
+Modelo de Usuario en la base de datos
 """
 from typing import Optional
 
 class User:
     """
-    User model definition
+    Definicion de la clase Usuario
     """
     id: Optional[str]
-    descripcion: str
-    precio: float
+    description: str
+    price: float
     stock: int
 
-    def __init__(self, descripcion: str, precio: float, stock: int):
-        self.descripcion = descripcion
-        self.precio = precio
+    def __init__(self, description: str, price: float, stock: int):
+        self.description = description
+        self.price = price
         self.stock = stock
 
     def json(self):
@@ -22,7 +22,7 @@ class User:
         Return the object as a json
         """
         return {
-            'descripcion': self.descripcion,
-            'precio': self.precio,
+            'description': self.description,
+            'price': self.price,
             'stock': self.stock
         }

@@ -1,21 +1,21 @@
 """
-User model on MongoDB
+Modelo de Usuario en la base de datos
 """
 from typing import Optional
 
 class User:
     """
-    User model definition
+    Definicion de la clase Usuario
     """
     id: Optional[str]
     name: str
     email: str
-    telefono: str
+    phone: str
 
-    def __init__(self, name: str, email: str, telefono: str):
+    def __init__(self, name: str, email: str, phone: str):
         self.name = name
         self.email = email
-        self.telefono = telefono
+        self.phone = phone
 
     def json(self):
         """
@@ -24,5 +24,5 @@ class User:
         return {
             'name': self.name,
             'email': self.email,
-            'telefono': self.telefono
+            'phone': self.phone
         }
