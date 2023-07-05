@@ -3,10 +3,12 @@ Ruta de API para obtener el balance de una cuenta
 """
 from flask import Blueprint, request, make_response
 from service.balance import make_balance_service
+from util.security import basic_auth
 
 balance_route = Blueprint('balance_route', __name__)
 
 @balance_route.route('/balance', methods=['GET'])
+@basic_auth
 def make_balance():
     """
     Obtiene los parametros JSON enviados por el cliente y

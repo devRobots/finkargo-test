@@ -3,10 +3,12 @@ Ruta de API para ordenar elementos
 """
 from flask import Blueprint, request, make_response
 from service.sort import sort_items_service
+from util.security import basic_auth
 
 sort_route = Blueprint('sort_route', __name__)
 
 @sort_route.route('/sort', methods=['GET'])
+@basic_auth
 def sort_items():
     """
     Obtiene los parametros JSON enviados por el cliente y 
