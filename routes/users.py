@@ -37,11 +37,12 @@ def add_user():
     """
     Agrega un usuario
     """
-    data = request.get_json()
-    user = data.get('user')
+    user = request.get_json()
 
-    if not data or not user:
+    if not user:
         return make_response('No se ha enviado ningún usuario', 400)
+    if not 'name' in user or not 'email' in user or not 'phone' in user:
+        return make_response('No se ha enviado un usuario válido', 400)
 
     message, status = add_user_service(user)
     return make_response(message, status)
@@ -53,12 +54,13 @@ def update_user(user_id):
     Actualiza un usuario por su id
     """
     data = request.get_json()
-    user = data.get('user')
 
-    if not data or not user:
+    if not data:
         return make_response('No se ha enviado ningún usuario', 400)
+    if not 'name' in data or not 'email' in data or not 'phone' in data:
+        return make_response('No se ha enviado un usuario válido', 400)
 
-    message, status = update_user_service(user_id, user)
+    message, status = update_user_service(user_id, data)
     return make_response(message, status)
 
 @users_route.route('/users/<user_id>', methods=['DELETE'])

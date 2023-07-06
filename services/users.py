@@ -39,11 +39,11 @@ def add_user_service(user):
     """
     try:
         database = get_connection()
-        user_id = database.users.insert_one(user)
+        result = database.users.insert_one(user)
     except mongo_errors.PyMongoError:
         return 'No fue posible conectarse a la BD', 500
 
-    return f'Usuario {user_id} agregado', 201
+    return f'Usuario {result.inserted_id} agregado', 201
 
 def update_user_service(user_id, user):
     """
