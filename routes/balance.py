@@ -24,4 +24,5 @@ def make_balance():
     if not months or not sales or not expenses:
         return make_response('No se ha enviado algún elemento', 400)
 
-    return make_balance_service(months, sales, expenses)
+    response = make_balance_service(months, sales, expenses)
+    return make_response(response, 200)

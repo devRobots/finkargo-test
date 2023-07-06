@@ -22,6 +22,9 @@ class User:
         Return the object as a json
         """
         return {
+            '_id': {
+                '$oid': self.id
+            },
             'description': self.description,
             'price': self.price,
             'stock': self.stock

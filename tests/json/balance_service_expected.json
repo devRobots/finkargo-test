@@ -1,0 +1,20 @@
+[
+    {
+        "mes": "Enero",
+        "Ventas": 100,
+        "Gastos": 50,
+        "Balance": 50
+    },
+    {
+        "mes": "Febrero",
+        "Ventas": 200,
+        "Gastos": 100,
+        "Balance": 100
+    },
+    {
+        "mes": "Marzo",
+        "Ventas": 300,
+        "Gastos": 150,
+        "Balance": 150
+    }
+]

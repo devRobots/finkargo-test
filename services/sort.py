@@ -1,8 +1,6 @@
 """
 Servicio de Endpoint que recibe una lista de numeros y los ordena
 """
-from flask import make_response
-
 def sort_items_service(items):
     """
     Ordena los elementos de la lista items
@@ -17,7 +15,7 @@ def sort_items_service(items):
     sorted_items = list(set(sorted(items)))
     sorted_items.extend(repetead_items)
 
-    return make_response({
+    return {
         'sin_clasificar': items,
         'clasificados': sorted_items
-    }, 200)
+    }

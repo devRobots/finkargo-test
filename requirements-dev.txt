@@ -1,0 +1,6 @@
+dotenv
+coverage
+pytest
+pytest-env
+pytest-mock
+-r requirements.txt

@@ -20,4 +20,5 @@ def sort_items():
     if not data or not items:
         return make_response('No se ha enviado ningún elemento', 400)
 
-    return sort_items_service(items)
+    response = sort_items_service(items)
+    return make_response(response, 200)

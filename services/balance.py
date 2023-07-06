@@ -2,8 +2,6 @@
 Servicio de Endpoint que recibe una lista de meses, ventas y gastos
 y devuelve el balance
 """
-from flask import make_response
-
 def make_balance_service(months, sales, expenses):
     """
     Recibe una lista de meses, ventas y gastos de data
@@ -19,4 +17,4 @@ def make_balance_service(months, sales, expenses):
             'Balance': sales[index] - expenses[index]
         })
 
-    return make_response(balance, 200)
+    return balance

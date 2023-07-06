@@ -26,6 +26,9 @@ class Sale:
         Return the object as a json
         """
         return {
+            '_id': {
+                '$oid': self.id
+            },
             'user_id': self.user_id,
             'product_id': self.product_id,
             'amount': self.amount,
