@@ -5,7 +5,7 @@ from bson import json_util
 from bson.objectid import ObjectId
 from flask import make_response, Response
 from pymongo import errors as mongo_errors
-from util.database import get_connection
+from utils.database import get_connection
 
 def get_users_service():
     """

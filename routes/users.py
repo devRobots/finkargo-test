@@ -2,10 +2,10 @@
 Ruta de API para gestionar usuarios
 """
 from flask import Blueprint, request, make_response
-from service.users import get_users_service, get_user_service
-from service.users import add_user_service, update_user_service
-from service.users import delete_user_service
-from util.security import basic_auth
+from services.users import get_users_service, get_user_service
+from services.users import add_user_service, update_user_service
+from services.users import delete_user_service
+from utils.security import basic_auth
 
 users_route = Blueprint('users_route', __name__)
 

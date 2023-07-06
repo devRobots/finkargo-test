@@ -2,8 +2,8 @@
 Ruta de API para ordenar elementos
 """
 from flask import Blueprint, request, make_response
-from service.sort import sort_items_service
-from util.security import basic_auth
+from services.sort import sort_items_service
+from utils.security import basic_auth
 
 sort_route = Blueprint('sort_route', __name__)
 
