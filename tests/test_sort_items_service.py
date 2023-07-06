@@ -1,5 +1,5 @@
 """
-Pruebas unitarias del servicio de balance
+Pruebas unitarias del servicio de ordenamiento
 """
 import pytest
 from utils.files import load_json_data
@@ -14,7 +14,7 @@ from services.sort import sort_items_service
         )
     ]
 )
-def test_make_balance_service(items, expected):
+def test_sort_items_service(items, expected):
     """
     Prueba unitaria del servicio de balance
     """

@@ -1,7 +1,7 @@
 """
 Ruta de API para gestionar usuarios
 """
-from flask import Blueprint, request, make_response
+from flask import Blueprint, request, make_response, Response
 from services.users import list_users_service, get_user_service
 from services.users import add_user_service, update_user_service
 from services.users import delete_user_service
@@ -15,7 +15,12 @@ def list_users():
     """
     Devuelve la lista de usuarios
     """
-    return list_users_service()
+    message, status = list_users_service()
+
+    if not status == 200:
+        return make_response(message, status)
+
+    return Response(message, status=status, mimetype='application/json')
 
 @users_route.route('/users/<user_id>', methods=['GET'])
 @basic_auth
@@ -23,7 +28,8 @@ def get_user(user_id):
     """
     Devuelve un usuario por su id
     """
-    return get_user_service(user_id)
+    message, status = get_user_service(user_id)
+    return make_response(message, status)
 
 @users_route.route('/users', methods=['POST'])
 @basic_auth
@@ -37,7 +43,8 @@ def add_user():
     if not data or not user:
         return make_response('No se ha enviado ningún usuario', 400)
 
-    return add_user_service(user)
+    message, status = add_user_service(user)
+    return make_response(message, status)
 
 @users_route.route('/users/<user_id>', methods=['PUT'])
 @basic_auth
@@ -51,7 +58,8 @@ def update_user(user_id):
     if not data or not user:
         return make_response('No se ha enviado ningún usuario', 400)
 
-    return update_user_service(user_id, user)
+    message, status = update_user_service(user_id, user)
+    return make_response(message, status)
 
 @users_route.route('/users/<user_id>', methods=['DELETE'])
 @basic_auth
@@ -59,4 +67,5 @@ def delete_user(user_id):
     """
     Elimina un usuario por su id
     """
-    return delete_user_service(user_id)
+    message, status = delete_user_service(user_id)
+    return make_response(message, status)
